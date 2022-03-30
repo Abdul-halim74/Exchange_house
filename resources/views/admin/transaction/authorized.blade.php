@@ -37,7 +37,7 @@
                 if(confirm('Do you want print')) {
                     alert('{{ Session::get('message1') }}')
                     var printId = $('#print').val();
-                    window.open('/admin/transaction-voucher-print/'+printId)
+                    window.open('/exchange-house/admin/transaction-voucher-print/'+printId)
                 }
             </script>
         @endif

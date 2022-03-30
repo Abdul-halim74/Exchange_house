@@ -817,7 +817,13 @@ class TransactionController extends Controller
         $logData->entry_date = now();
         $logData->ip_address = request()->ip();
         $logData->save();
-        return $pdf->download($order_no.'.pdf');
+        //return $pdf->download($order_no.'.pdf');
+        return $pdf->stream($order_no.'.pdf');
+    }
+
+    public function testvoucherPrint(){
+        $pdf = PDF::loadView('admin.transaction.test_pdf');
+        return $pdf->stream('test'.'.pdf');
     }
 
     //Track transaction

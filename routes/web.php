@@ -120,6 +120,7 @@ Route::group(['prefix'=>'admin','middleware' =>['admin','auth', 'permission']], 
 
     //To print voucher
     Route::get('/transaction-voucher-print/{id}', [TransactionController::class, 'voucherPrint']);
+    Route::get('/test-transaction-voucher-print', [TransactionController::class, 'testvoucherPrint']);
 
     //Track transaction
     Route::get('/track-transaction', [TransactionController::class, 'trackTransaction'])->name('admin.trackTransaction');
