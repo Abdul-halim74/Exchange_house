@@ -186,7 +186,7 @@ CREATE TABLE `branch_infos` (
 
 LOCK TABLES `branch_infos` WRITE;
 /*!40000 ALTER TABLE `branch_infos` DISABLE KEYS */;
-INSERT INTO `branch_infos` VALUES (1,12,'Agargaon Branch','545','656323235',NULL,NULL),(2,12,'Mohammadpur Branch','546','756566',NULL,NULL),(3,11,'Imamgonj Branch','7678','134345',NULL,NULL);
+INSERT INTO `branch_infos` VALUES (1,12,'Agargaon branch','545','656323235',NULL,NULL),(2,12,'Mohammadpur branch','546','756566',NULL,NULL),(3,11,'Imamgonj branch','7678','134345',NULL,NULL);
 /*!40000 ALTER TABLE `branch_infos` ENABLE KEYS */;
 UNLOCK TABLES;
 

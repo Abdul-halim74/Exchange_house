@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Branch;
+use App\Models\Department;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -21,7 +23,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role_id'
+        'position',
+        'contact',
+        'role_id',
+        'department_id',
+        'branch_id'
     ];
 
     /**
@@ -43,7 +49,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function role(){
+    public function role() {
         return $this->belongsTo(RoleTable::class);
+    }
+    public function department() {
+        return $this->belongsTo(Department::class,'department_id');
+    }
+    public function branch() {
+        return $this->belongsTo(Branch::class,'branch_id');
     }
 }

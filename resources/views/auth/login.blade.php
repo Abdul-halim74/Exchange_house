@@ -93,10 +93,12 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="{{ route('site_login') }}" class="h1"><b>Exchange</b>House</a>
+                
+                <a href="{{ route('site_login') }}" class="h1"><img src="{{asset('img/bankLogo/login.png')}}" alt="logo"></a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                {{-- <p class="login-box-msg">Sign in to start your session</p> --}}
+                <a href="{{ route('site_login') }}"><p class="login-box-msg"><b>Gate Pass Management</b></p></a>
 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf

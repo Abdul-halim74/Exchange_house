@@ -2,9 +2,10 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('admin.dashboard') }}" class="brand-link">
-        <img src="{{ asset('support_files/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        
-        <span class="brand-text font-weight-light">VSL</span>
+        <img src="{{ asset('img/bankLogo/One_bank.jpg') }}" alt="onebank Logo"
+            class="brand-image img-circle elevation-3" style="opacity: .8">
+
+        <span class="brand-text font-weight-light">Gate Pass</span>
     </a>
 
     <!-- Sidebar -->
@@ -29,7 +30,32 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        @isset(auth()->user()->role->permission['permission']['agent']['view'])
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.user_list') }}" class="nav-link @yield('user_list')">
+                                <i class="fas fa-users nav-icon"></i>
+                                <p>User List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.user_create') }}" class="nav-link @yield('new_user')">
+                                <i class="fas fa-user-plus nav-icon"></i>
+                                <p>Add User</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.branch_list') }}" class="nav-link @yield('branch')">
+                                <i class="fas fa-code-branch nav-icon"></i>
+                                <p>Branch</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('department.index') }}" class="nav-link @yield('department')">
+                                <i class="fas fa-building nav-icon"></i>
+                                <p>Department</p>
+                            </a>
+                        </li>
+                        {{-- @isset(auth()->user()->role->permission['permission']['agent']['view'])
                             <li class="nav-item">
                                 <a href="{{ route('admin.agent_info_list') }}" class="nav-link @yield('agent')">
                                     <i class="fas fa-user-cog nav-icon"></i>
@@ -60,7 +86,100 @@
                                     <p>Agent Bank Commission Setup</p>
                                 </a>
                             </li>
-                        @endisset
+                        @endisset --}}
+                    </ul>
+                </li>
+
+                {{-- Visitor section --}}
+                <li class="nav-item @yield('visitor')">
+                    <a href="#" class="nav-link @yield('settings_a')">
+                        <i class="fab fa-intercom nav-icon"></i>
+                        <p>
+                            Visitors
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('visitors.index') }}" class="nav-link @yield('all-visitor')">
+                                <i class="fas fa-users nav-icon"></i>
+                                <p>All Visitor</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('visitors.create') }}" class="nav-link @yield('new-visitor')">
+                                <i class=" nav-icon fas fa-user-plus"></i>
+                                <p>Add Visitor</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {{-- Visitor Request --}}
+                <li class="nav-item @yield('meeting_request')">
+                    <a href="#" class="nav-link @yield('settings_a')">
+                        {{-- <i class="nav-icon fas fa-tools"></i> --}}
+                        <i class="fas fa-handshake nav-icon"></i>
+                        <p>
+                            Visitor Request
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.create-user-wise-visitor') }}" class="nav-link @yield('create-meeting')">
+                                <i class=" nav-icon fas fa-user-plus"></i>
+                                <p>Create visitor request</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.user-wise-new-request') }}" class="nav-link @yield('new-meeting')">
+                                <i class=" nav-icon fas fa-user-plus"></i>
+                                <p>New Request</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.user-wise-request') }}" class="nav-link @yield('all-meeting')">
+                                <i class="fas fa-users nav-icon"></i>
+                                <p>All Request</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                {{-- Reports --}}
+                <li class="nav-item @yield('reports')">
+                    <a href="#" class="nav-link @yield('settings_a')">
+                        <i class="fas fa-flag-checkered nav-icon"></i>
+                        <p>
+                            Reports
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('reports_generate') }}" class="nav-link @yield('report_visitor')">
+                                <i class=" nav-icon fas fa-user-plus"></i>
+                                <p>Visitor Report</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {{-- Profile Setting --}}
+                <li class="nav-item @yield('profileSetting')">
+                    <a href="#" class="nav-link @yield('profileSetting')">
+                        <i class="fas fa-address-card nav-icon"></i>
+                        <p>
+                            Profile Setting
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('userProfile')}}" class="nav-link @yield('user_profile')">
+                                <i class=" nav-icon far fa-user"></i>
+                                <p>Profile</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
@@ -180,7 +299,7 @@
                 @endisset
 
                 {{-- Report --}}
-                <li class="nav-item @yield('report')">
+                {{-- <li class="nav-item @yield('report')">
                     <a href="#" class="nav-link @yield('report_a')">
                         <i class="nav-icon fab fa-readme"></i>
                         <p>
@@ -203,7 +322,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
                 {{-- Role and permission Section --}}
                 @isset(auth()->user()->role->permission['permission']['role']['view'])
@@ -276,7 +395,8 @@
 
                 {{-- Logout --}}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <a class="nav-link" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="nav-icon icon ion-power"></i> Sign Out
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

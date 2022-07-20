@@ -3,14 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Exchange House | @yield('title')</title>
+    <title>Gate Entry Management | @yield('title')</title>
     @include('admin.inc.header')
+    @yield('styles')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{ asset('support_files/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60" width="60">
+            <img src="{{ asset('img/bankLogo/One_bank.jpg') }}" alt="onebank Logo"
+            class="brand-image img-circle elevation-3" style="opacity: .8" height="60" width="60">
+            {{-- <img class="animation__shake" src="{{ asset('img/bankLogo/One_bank.jpg') }}" alt="OneBankLogo" height="60" width="60"> --}}
         </div>
 
         <!-- Navbar -->
@@ -59,5 +62,6 @@
     <!-- jQuery Start -->
     @include('admin.inc.js')
     <!-- jQuery End -->
+    @yield('scripts')
 </body>
 </html>
